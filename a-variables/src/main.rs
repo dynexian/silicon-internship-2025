@@ -1,3 +1,5 @@
+const PI: f32 = 3.14159; // Constant value of PI
+
 fn main() {
     // // let variable_name: type = "value";
     
@@ -84,14 +86,16 @@ fn main() {
     // x = 40; // Second Assignment (Mutation)
     // println!("x after mutation: {}", x);
 
-    let mut x;
-    x = 10;
-    println!("x: {}", x);
-    x = 3.14;
-    println!("x after: {}", x);
+    // let mut x;
+    // x = 10;
+    // println!("x: {}", x);
+    // x = 3.14;
+    // println!("x after: {}", x);
 
     // u8, u16, u32, u64, u128
 
     // u8 -> u16 -> u32 -> u64 -> u128
     // u128 -> u64 -> u32 -> u16 -> u8
+
+    println!("PI: {}", PI);
 }
