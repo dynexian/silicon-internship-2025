@@ -92,10 +92,15 @@ fn main() {
     // x = 3.14;
     // println!("x after: {}", x);
 
+    println!("PI: {}", PI);
+}
+
+fn homework() {
     // u8, u16, u32, u64, u128
 
     // u8 -> u16 -> u32 -> u64 -> u128
     // u128 -> u64 -> u32 -> u16 -> u8
 
-    println!("PI: {}", PI);
+    // Static Variables
+    // Type Casting
 }
