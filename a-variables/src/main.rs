@@ -103,4 +103,6 @@ fn homework() {
 
     // Static Variables
     // Type Casting
+
+    // cargo run --bin variables
 }
