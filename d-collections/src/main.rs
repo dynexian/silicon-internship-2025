@@ -29,7 +29,18 @@ fn main() {
     // delete_last_element();
     // delete_at_position();
     // length_of_vector();
-    iterating_over_vector();
+    // iterating_over_vector();
+
+    // HASHMAPS
+    // create_empty_hashmap();
+    // insert_into_hashmap();
+    // get_from_hashmap();
+    // contains_key_in_hashmap();
+    // remove_from_hashmap();
+    // entry_into_hashmap();
+    // iterating_over_keys();
+    // iterating_over_values();
+    iterating_over_key_value();
 }
 
 // ARRAY EXAMPLES
@@ -286,3 +297,119 @@ fn iterating_over_vector() {
     let third = vec[2];
     println!("Third element: {}", third);
 }
+
+// HASHMAPS EXAMPLES
+use std::collections::HashMap;
+
+fn create_empty_hashmap() {
+    // Name - Favorite IceCream Flavor
+    let ice_cream_map: HashMap<String, String> = HashMap::new();
+    println!("Empty HashMap: {:?}", ice_cream_map);
+}
+
+fn insert_into_hashmap() {
+    // Name - Favorite IceCream Flavor
+    let mut ice_cream_map: HashMap<String, String> = HashMap::new();
+    println!("Empty HashMap: {:?}", ice_cream_map);
+
+    ice_cream_map.insert("Yuvraj".to_string(), String::from("Chocolate"));
+    println!("HashMap: {:?}", ice_cream_map);
+    ice_cream_map.insert("Abhilash".to_string(), String::from("Belgian Chocolate"));
+    println!("HashMap: {:?}", ice_cream_map);
+    ice_cream_map.insert("Sourav".to_owned(), String::from("Mint Chocolate"));
+    println!("HashMap: {:?}", ice_cream_map);
+
+    ice_cream_map.insert("Sourav".to_owned(), String::from("Mint Chocolate"));
+    println!("HashMap: {:?}", ice_cream_map);
+    ice_cream_map.insert("Yuvraj".to_string(), String::from("Vanilla"));
+    println!("HashMap: {:?}", ice_cream_map);
+    ice_cream_map.insert("Ayush".to_string(), String::from("Butter Scotch"));
+    println!("HashMap: {:?}", ice_cream_map);
+}
+
+fn get_from_hashmap() {
+    let mut ice_cream_map: HashMap<String, String> = HashMap::new();
+    ice_cream_map.insert("Yuvraj".to_string(), String::from("Chocolate"));
+    ice_cream_map.insert("Abhilash".to_string(), String::from("Belgian Chocolate"));
+    ice_cream_map.insert("Sourav".to_owned(), String::from("Mint Chocolate"));
+
+    let res = ice_cream_map.get("Sourav");
+    println!("Get Sourav's favorite ice cream flavor: {:?}", res);
+}
+
+fn contains_key_in_hashmap() {
+    let mut ice_cream_map: HashMap<String, String> = HashMap::new();
+    ice_cream_map.insert("Yuvraj".to_string(), String::from("Chocolate"));
+    ice_cream_map.insert("Abhilash".to_string(), String::from("Belgian Chocolate"));
+    ice_cream_map.insert("Sourav".to_owned(), String::from("Mint Chocolate"));
+    
+    let key_one = "Mahavir";
+    let key_two = "Yuvraj";
+
+    println!("Map contains key_one - {}: {}", key_one, ice_cream_map.contains_key(key_one));
+    println!("Map contains key_two - {}: {}", key_two, ice_cream_map.contains_key(key_two));
+}
+
+fn remove_from_hashmap() {
+    let mut ice_cream_map: HashMap<String, String> = HashMap::new();
+    ice_cream_map.insert("Yuvraj".to_string(), String::from("Chocolate"));
+    ice_cream_map.insert("Abhilash".to_string(), String::from("Belgian Chocolate"));
+    ice_cream_map.insert("Sourav".to_owned(), String::from("Mint Chocolate"));
+    
+    let key_to_remove = "Yuvraj";
+    println!("HashMap before removing {}: {:?}", key_to_remove, ice_cream_map);
+
+    let removed_flavour = ice_cream_map.remove(key_to_remove);
+
+    println!("HashMap after removing {}: {:?}", key_to_remove, ice_cream_map);
+    println!("Removed flavour for {}: {:?}", key_to_remove, removed_flavour);
+}
+
+fn entry_into_hashmap() {
+    let mut ice_cream_map: HashMap<String, String> = HashMap::new();
+    ice_cream_map.insert("Yuvraj".to_string(), String::from("Chocolate"));
+    ice_cream_map.insert("Abhilash".to_string(), String::from("Belgian Chocolate"));
+    ice_cream_map.insert("Sourav".to_string(), String::from("Mint Chocolate"));
+
+    let entry = ice_cream_map.entry("Mahavir".to_string()).or_insert(String::from("Vanilla"));
+    // println!("HashMap after entry for Mahavir: {:?}", ice_cream_map);
+    println!("Entry for Mahavir: {:?}", entry);
+}
+
+fn iterating_over_keys() {
+    let mut ice_cream_map: HashMap<String, String> = HashMap::new();
+    ice_cream_map.insert("Yuvraj".to_string(), String::from("Chocolate"));
+    ice_cream_map.insert("Abhilash".to_string(), String::from("Belgian Chocolate"));
+    ice_cream_map.insert("Sourav".to_string(), String::from("Mint Chocolate"));
+
+    let _keys = ice_cream_map.keys();
+
+    for key in ice_cream_map.keys() {
+        println!("Key: {}", key);
+    }
+}
+
+fn iterating_over_values() {
+    let mut ice_cream_map: HashMap<String, String> = HashMap::new();
+    ice_cream_map.insert("Yuvraj".to_string(), String::from("Chocolate"));
+    ice_cream_map.insert("Abhilash".to_string(), String::from("Belgian Chocolate"));
+    ice_cream_map.insert("Sourav".to_string(), String::from("Mint Chocolate"));
+
+    let _values = ice_cream_map.values();
+
+    for value in ice_cream_map.values() {
+        println!("Value: {}", value);
+    }
+}
+
+fn iterating_over_key_value() {
+    let mut ice_cream_map: HashMap<String, String> = HashMap::new();
+    ice_cream_map.insert("Yuvraj".to_string(), String::from("Chocolate"));
+    ice_cream_map.insert("Abhilash".to_string(), String::from("Belgian Chocolate"));
+    ice_cream_map.insert("Sourav".to_string(), String::from("Mint Chocolate"));
+
+    for (key, value) in &ice_cream_map {
+        println!("Key: {}, Value: {}", key, value);
+    }
+}
+
