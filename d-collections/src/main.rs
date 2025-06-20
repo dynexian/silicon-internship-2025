@@ -1,4 +1,5 @@
 fn main() {
+    /// ARRAYS
     // init_explicit();
     // init_repeated();
     // init_mutation();
@@ -9,6 +10,8 @@ fn main() {
     // iterate_mutably();
     // array_slicing();
     // find_max();
+
+    /// TUPLES
     // init_tuples();
     // access_elements();
     // destructure_tuple();
@@ -17,6 +20,16 @@ fn main() {
     // println!("First element of returned tuple: {}", ret.0);
     // println!("Second element of returned tuple: {}", ret.1);
     // match_tuple();
+    // tuple_example();
+
+    // VECTORS
+    // create_vector();
+    // push_elements();
+    // insert_elements();
+    // delete_last_element();
+    // delete_at_position();
+    // length_of_vector();
+    iterating_over_vector();
 }
 
 // ARRAY EXAMPLES
@@ -112,6 +125,7 @@ fn find_max() {
     println!("Max value in the array: {}", max);
 }
 
+// TUPLE EXAMPLES
 fn init_tuples() {
     let tup = (1, 2, 3, 4, 5); // -> (i32, i32, i32, i32, i32)
     println!("TUPLE: {:?}", tup);
@@ -153,4 +167,122 @@ fn match_tuple() {
         (-2, 10) => println!("Special point at (-2, 10)"),
         (x, y) => println!("Point at ({}, {})", x, y),
     }
+}
+
+// fn tuple_example() {
+    // let tup = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14);
+    // let tup = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13);
+    // println!("Tuple: {:?}", tup);
+// }
+
+// Tuple - Type
+// (1) -> Rules(Traits) Implemented [Debug - Print, Display - Print, Clone - Copying]
+// (1, 2) -> Rules(Traits) ReImplemented
+
+// [i32; N] - Rules(Traits) Implemented [Debug - Print, Display - Print, Clone - Copying]
+
+// [1, 2]
+// [3]
+// [1, 2, 3]
+
+// (T1) -> Implemented - (i32) - (String) - (char)
+// (T1, T2) - 
+// (T1, T2, T3)
+
+// ('a', 'b', 'c')
+// ('a', true)
+
+// (A, B, C) - (i32, f64, bool) - (f64, char, String)
+// (U, T) - (i32, String) - (String, f64)
+// (H, L) - (f64, char) - (String, f64)
+
+// VECTOR EXAMPLES
+fn return_vec() -> Vec<i32> {
+    vec![1, 2, 3, 4, 5]
+}
+
+fn create_vector() {
+    let empty_vector: Vec<i32> = Vec::new();
+    let empty_vector = Vec::<i32>::new(); // Turbo-fish operator
+    let empty_vector: Vec<f64> = vec![];
+
+    let vector_with_elements = vec![1, 2, 3, 4, 5];
+
+    let vector_with_same_elements = vec![19; 10];
+
+    println!("Empty Vector: {:?}", empty_vector);
+    println!("Vector with elements: {:?}", vector_with_elements);
+    println!("Vector with same elements: {:?}", vector_with_same_elements);
+}
+
+fn push_elements() {
+    let mut empty_vector: Vec<i32> = vec![];
+
+    println!("Empty Vector before pushing: {:?}", empty_vector);
+    // 1 2 3 4 5
+    empty_vector.push(1);
+    empty_vector.push(2);
+    empty_vector.push(3);
+    empty_vector.push(4);
+    empty_vector.push(5);
+    empty_vector.push(100);
+
+    println!("Empty Vector after pushing: {:?}", empty_vector);
+}
+
+fn insert_elements() {
+    let mut vec = vec![1, 2, 3, 4, 5, 6];
+    let new_element = 28;
+    let index = 4;
+
+    vec.insert(index, new_element);
+    // vec.insert(100, new_element); // Will panic at runtime
+    println!("Vector after inserting {} at index {}: {:?}", new_element, index, vec);
+}
+
+fn delete_last_element() {
+    let mut vec = vec![1, 2, 3, 4, 5];
+    println!("Vector before popping: {:?}", vec);
+
+    let popped_element = vec.pop();
+
+    println!("Popped element: {:?}", popped_element);
+    println!("Vector after popping: {:?}", vec);
+
+    let mut vec: Vec<i32> = vec![];
+    let popped_element = vec.pop();
+
+    println!("Popped element from empty vector: {:?}", popped_element);
+}
+
+fn delete_at_position() {
+    let mut vec = return_vec();
+    println!("Vector before removing: {:?}", vec);
+
+    let index_to_remove_at = 2;
+
+    let removed_element = vec.remove(index_to_remove_at);
+    println!("Vector after removing element at index {}: {:?}", index_to_remove_at, vec);
+
+    println!("Removed element: {}", removed_element);
+}
+
+fn length_of_vector() {
+    let vec = return_vec();
+    println!("Vector: {:?}", vec);
+
+    let length = vec.len();
+    println!("Length of the vector: {}", length);
+}
+
+fn iterating_over_vector() {
+    let vec = return_vec();
+    println!("Vector: {:?}", vec);
+
+    for element in &vec {
+        println!("Element: {}", element);
+    }
+
+    let third = vec[2];
+    println!("Third element: {}", third);
 }
