@@ -40,7 +40,8 @@ fn main() {
     // entry_into_hashmap();
     // iterating_over_keys();
     // iterating_over_values();
-    iterating_over_key_value();
+    // iterating_over_key_value();
+    fancy_map();
 }
 
 // ARRAY EXAMPLES
@@ -413,3 +414,13 @@ fn iterating_over_key_value() {
     }
 }
 
+fn fancy_map() {
+    let mut fancy_map: HashMap<Vec<i32>, Vec<bool>> = HashMap::new();
+    println!("Fancy Map: {:?}", fancy_map);
+
+    let key_one = vec![1, 2, 3];
+    let value_one = vec![true];
+
+    fancy_map.insert(key_one, value_one);
+    println!("Fancy Map: {:?}", fancy_map);
+}
