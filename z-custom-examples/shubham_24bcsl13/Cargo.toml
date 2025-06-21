@@ -1,0 +1,2 @@
+[workspace]
+members = ["unit_struct_examples"]
