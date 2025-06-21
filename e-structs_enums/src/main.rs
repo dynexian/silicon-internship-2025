@@ -14,7 +14,8 @@ fn main() {
     // check_clone();
 
     // impl_examples();
-    calculator_example();
+    // calculator_example();
+    enum_example();
 }
 
 // Structs let you group together related data types into one single type.
@@ -304,3 +305,134 @@ fn calculator_example() {
 // Self
 // methods
 // associated functions
+
+
+// ENUMS
+// Enums are a data type that allow you to say that a value can be one of possible set of variants.
+enum Direction {
+    East, // variant
+    West, // variant
+    North, // variant
+    South // variant
+}
+
+fn enum_example() {
+    let direction_north = Direction::North;
+    let direction_south = Direction::South;
+    let direction_east = Direction::East;
+    let direction_west = Direction::West;
+
+    // match direction_south {
+    //     Direction::North => println!("Going North!"),
+    //     Direction::South => println!("Going South!"),
+    //     Direction::East => println!("Going East!"),
+    //     Direction::West => println!("Going West!"),
+    // }
+
+    // println!("Direction North: {:?}", direction_north.is_north());
+    // println!("Direction South: {:?}", direction_south.is_south());
+    // println!("Direction East: {:?}", direction_east.is_east());
+    // println!("Direction West: {:?}", direction_west.is_west());
+    // println!("Direction North: {:?}", direction_east.is_north());
+
+    // let mint_choco = IceCreamFlavours::MintChocolate;
+    // let belgian_choco = IceCreamFlavours::BelgianChocolate;
+    // let choco = IceCreamFlavours::Chocolate;
+
+    // println!("Is Chocolate a chocolate flavour? {}", choco.is_chocolate());
+    // println!("Is Mint Chocolate a chocolate flavour? {}", mint_choco.is_chocolate());
+    // println!("Supreme flavour of ice cream: {:?}", IceCreamFlavours::supreme_flavour());
+
+    let circle = Shape::Circle(5.0);
+    let square = Shape::Square(10.0);
+    let rectangle = Shape::Rectangle(2.0, 5.0);
+
+    println!("Area of Circle: {}", circle.area());
+    println!("Area of Square: {}", square.area());
+    println!("Area of Rectangle: {}", rectangle.area());
+}
+
+impl Direction {
+    fn is_north(&self) -> bool {
+        match self {
+            Direction::North => true,
+            _ => false,
+        }
+    }
+
+    fn is_south(&self) -> bool {
+        match self {
+            Direction::South => true,
+            _ => false,
+        }
+    }
+
+    fn is_east(&self) -> bool {
+        match self {
+            Direction::East => true,
+            _ => false,
+        }
+    }
+
+    fn is_west(&self) -> bool {
+        match self {
+            Direction::West => true,
+            _ => false,
+        }
+    }
+}
+
+#[derive(Debug)]
+enum IceCreamFlavours {
+    Chocolate,
+    Vanilla,
+    BelgianChocolate,
+    MintChocolate,
+    ButterScotch,
+    BlackCurrant
+}
+
+impl IceCreamFlavours {
+    fn is_chocolate(&self) -> bool {
+        match self {
+            IceCreamFlavours::Chocolate => true,
+            _ => false,
+        }
+    }
+
+    fn is_vanilla(&self) -> bool {
+        match self {
+            IceCreamFlavours::Vanilla => true,
+            _ => false,
+        }
+    }
+
+    fn is_belgian_chocolate(&self) -> bool {
+        match self {
+            IceCreamFlavours::BelgianChocolate => true,
+            _ => false,
+        }
+    }
+
+    fn supreme_flavour() -> Self {
+        IceCreamFlavours::MintChocolate
+    }
+}
+
+// Enums with associated values
+#[derive(Debug)]
+enum Shape {
+    Circle(f64), // radius
+    Square(f64), // side length
+    Rectangle(f64, f64), // width, height
+}
+
+impl Shape {
+    fn area(&self) -> f64 {
+        match self {
+            Shape::Circle(radius) => 3.14 * radius * radius,
+            Shape::Square(side) => side * side,
+            Shape::Rectangle(width, height) => width * height
+        }
+    }
+}
