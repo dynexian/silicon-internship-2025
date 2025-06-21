@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["main","print_state","print_welcome"],"struct":["Math","Printer","Start","Welcome"]};
