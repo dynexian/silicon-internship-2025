@@ -212,13 +212,13 @@ fn compare<T: PartialOrd + std::fmt::Display>(a: T, b: T) {
 // }
 
 trait Draw {
-   fn draw_new(&self);
+   fn draw_new(&self, item: i32);
    fn name(&self) -> String;
 }
 
 impl Draw for Circle {
-    fn draw_new(&self) {
-        println!("Drawing Circle with radius: {}", self.radius);
+    fn draw_new(&self, item: i32) {
+        println!("Drawing Circle with radius: {} and item {}", self.radius, item);
     }
 
     fn name(&self) -> String {
@@ -227,7 +227,7 @@ impl Draw for Circle {
 }
 
 impl Draw for Rectangle {
-    fn draw_new(&self) {
+    fn draw_new(&self, item: i32) {
         println!("Drawing Rectangle with width: {} and height: {}", self.width, self.height);
     }
 
@@ -237,7 +237,7 @@ impl Draw for Rectangle {
 }
 
 impl Draw for Square {
-    fn draw_new(&self) {
+    fn draw_new(&self, item: i32) {
         println!("Drawing Square with side: {}", self.side);
     }
 
@@ -279,7 +279,7 @@ fn dyn_dispatch_example() {
 
     let shapes: Vec<&dyn Draw> = vec![&circle, &rectangle, &square, &circle_2, &rectangle_2];
     for shape in shapes {
-        shape.draw();
+        shape.draw_new(23);
         println!("Shape Name: {}", shape.name());
     }
 }
