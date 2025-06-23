@@ -1,5 +1,6 @@
 fn main() {
-    trait_example();
+    // trait_example();
+    dyn_dispatch_example();
 }
 
 // Traits in Rust define shared behaviour between types.
@@ -177,35 +178,117 @@ fn compare<T: PartialOrd + std::fmt::Display>(a: T, b: T) {
     println!("Max: {}", max);
 }
 
-compare(5, 3);
-compare(5.9, 3.3);
-// compare('5', '3');
+// compare(5, 3);
+// compare(5.9, 3.3);
+// // compare('5', '3');
 
-compare_integer()
-compare_float()
+// compare_integer()
+// compare_float()
 // compare_char()
 
-struct Point<T> {
-    x: T,
-    y: T
+// struct Point<T> {
+//     x: T,
+//     y: T
+// }
+
+// point1 = Point::<i32> {
+//     x: 20,
+//     y: 20
+// }
+
+// point2 = Point::<f32> {
+//     x: 20.789,
+//     y: 20.32
+// }
+
+// struct IntPoint {
+//     x: i32,
+//     y: i32
+// }
+
+// struct FloatPoint {
+//     x: f32,
+//     y: f32
+// }
+
+trait Draw {
+   fn draw_new(&self);
+   fn name(&self) -> String;
 }
 
-point1 = Point::<i32> {
-    x: 20,
-    y: 20
+impl Draw for Circle {
+    fn draw_new(&self) {
+        println!("Drawing Circle with radius: {}", self.radius);
+    }
+
+    fn name(&self) -> String {
+        "Circle".to_string()
+    }
 }
 
-point2 = Point::<f32> {
-    x: 20.789,
-    y: 20.32
+impl Draw for Rectangle {
+    fn draw_new(&self) {
+        println!("Drawing Rectangle with width: {} and height: {}", self.width, self.height);
+    }
+
+    fn name(&self) -> String {
+        "Rectangle".to_string()
+    }
 }
 
-struct IntPoint {
-    x: i32,
-    y: i32
+impl Draw for Square {
+    fn draw_new(&self) {
+        println!("Drawing Square with side: {}", self.side);
+    }
+
+    fn name(&self) -> String {
+        "Square".to_string()
+    }
 }
 
-struct FloatPoint {
-    x: f32,
-    y: f32
+
+// Dynamic Dispatch - using trait objects
+fn dyn_dispatch_example() {
+    let circle = Circle {
+        radius: 5.0
+    };
+
+    let rectangle = Rectangle {
+        width: 2.0,
+        height: 1.0
+    };
+
+    let square = Square {
+        side: 3.0
+    };
+
+    let circle_2 = Circle {
+        radius: 10.0
+    };
+
+    let rectangle_2 = Rectangle {
+        width: 4.0,
+        height: 2.0
+    };
+
+    // Vec<String>
+    // Vec<i32>
+    // Vec<bool>
+    // Vec<&str>
+    // Vec<&dyn Drawable>
+
+    let shapes: Vec<&dyn Draw> = vec![&circle, &rectangle, &square, &circle_2, &rectangle_2];
+    for shape in shapes {
+        shape.draw();
+        println!("Shape Name: {}", shape.name());
+    }
 }
+
+// Rules to allow dynamic dispatch:
+// 1. All functions in the trait must have a 'self' parameter(all functions in traits should be a method).
+// 2. The trait must not have any generic parameters.
+
+// trait Draw {
+   // fn draw(&self);
+   // fn name(&self) -> String;
+//}
