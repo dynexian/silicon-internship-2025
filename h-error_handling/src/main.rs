@@ -341,3 +341,7 @@ fn test_operator(){
         Err(e) => println!("Error: {}", e),
     }
 }
+
+// TODO
+// unwrap_or_else, unwrap_or_default, map, map_err, filter, into_iter, iter
+// collect, min, max, and_then, or_else, ok_or, ok_or_else
