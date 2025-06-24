@@ -5,7 +5,9 @@ fn main() {
     // another_example();
     // option_methods();
     // option_methods_2();
-    result_example();
+    // result_example();
+    test_operator();
+
 }
 
 
@@ -290,3 +292,52 @@ fn safe_division(a: i32, b: i32) -> Result<i32, String> {
 
 // option : is_some and is_none
 // result: is_ok and is_err
+
+
+//  operator ?
+
+
+fn parse_number(text: &str) -> Result<i32, String> {
+    match text.parse::<i32>() {
+        Ok(value) => Ok(value),
+        Err(_) => Err("Failed to parse number".to_string()),
+    }
+}
+ 
+fn double_string_number(text: &str) -> Result<i32, String> {
+    let number = parse_number(text)?;  // return Err(e)
+
+    Ok(number * 2)
+    // Err(format!("{}", number*2))
+    // match number {
+    //     Ok(value) => Ok(value * 2),
+    //     Err(e) => Err(e),
+    // }
+
+    // let double_number_str = (number*2).to_string();
+    // println!("Double number string: {}", double_number_str);
+}
+
+fn test_operator(){
+
+    // match parse_number("42") {
+    //     Ok(value) => println!("Parsed value: {}", value),
+    //     Err(e) => println!("Error: {}", e),
+    // }
+
+    // match parse_number("abc") {
+    //     Ok(value) => println!("Parsed value: {}", value),
+    //     Err(e) => println!("Error: {}", e),
+    // }
+
+
+    match double_string_number("42") {
+        Ok(value) => println!("Doubled value: {}", value),
+        Err(e) => println!("Error: {}", e),
+    }
+
+    match double_string_number("abc") {
+        Ok(value) => println!("Doubled value: {}", value),
+        Err(e) => println!("Error: {}", e),
+    }
+}
